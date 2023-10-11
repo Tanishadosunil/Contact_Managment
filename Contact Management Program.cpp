@@ -66,7 +66,8 @@ public:
         else {
             string name;
             cout<<"Enter Name: "<<endl;
-            cin>>name;
+            cin.ignore();
+            std::getline(std::cin, name);
             int index;
             for(index=0; index<contacts.size(); index++) {
                 if(contacts[index].name==name) {
@@ -121,8 +122,9 @@ int main() {
         switch(choice) {
             case 1:{
                 string name, phoneNumber, email;
-                cout<<"Enter Name: "<<endl;
-                cin>>name;
+                cout << "Enter Name: " << endl;
+                cin.ignore();
+                std::getline(std::cin, name);
                 cout<<"Enter Phone Number: "<<endl;
                 cin>>phoneNumber;
                 cout<<"Enter Email: "<<endl;
@@ -137,7 +139,8 @@ int main() {
                 cout<<"Enter Index: "<<endl;
                 cin>>index;
                 cout<<"Enter Name: "<<endl;
-                cin>>name;
+                cin.ignore();
+                std::getline(std::cin, name);
                 cout<<"Enter Phone Number: "<<endl;
                 cin>>phoneNumber;
                 cout<<"Enter Email: "<<endl;
