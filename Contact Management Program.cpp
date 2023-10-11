@@ -20,10 +20,10 @@ public:
     }
 
     void editContact(int index, string name, string phoneNumber, string email) {
-        if((index-1)>=0 && (index-1)<contacts.size()) {
-            contacts[index-1].name=name;
-            contacts[index-1].phoneNumber=phoneNumber;
-            contacts[index-1].email=email;
+        if(index>=0 && index<contacts.size()) {
+            contacts[index].name=name;
+            contacts[index].phoneNumber=phoneNumber;
+            contacts[index].email=email;
             cout<<"Conatct edited successfully."<<endl;
         }
         else
@@ -31,8 +31,8 @@ public:
     }
 
     void deleteContact(int index) {
-        if((index-1)>=0 && (index-1)<contacts.size()) {
-            contacts.erase(contacts.begin()+(index-1));
+        if(index>=0 && index<contacts.size()) {
+            contacts.erase(contacts.begin()+index);
             cout<<"Contact deleted successfully"<<endl;
         }
         else
@@ -48,11 +48,11 @@ public:
             int index;
             cout<<"Enter Index: "<<endl;
             cin>>index;
-            if((index-1)>=0 && (index-1)<contacts.size()) {
+            if(index>=0 && index<contacts.size()) {
                 cout<<"Index: "<<index<<endl;
-                cout<<"Name: "<<contacts[index-1].name<<endl;
-                cout<<"Phone Number: "<<contacts[index-1].phoneNumber<<endl;
-                cout<<"Email: "<<contacts[index-1].email<<endl;
+                cout<<"Name: "<<contacts[index].name<<endl;
+                cout<<"Phone Number: "<<contacts[index].phoneNumber<<endl;
+                cout<<"Email: "<<contacts[index].email<<endl;
             }
             else
                 cout<<"Invalid Contact"<<endl;
@@ -70,10 +70,10 @@ public:
             int index;
             for(index=0; index<contacts.size(); index++) {
                 if(contacts[index].name==name) {
-                    cout<<"Index: "<<index+1<<endl;
-                    cout<<"Name: "<<contacts[index+1].name<<endl;
-                    cout<<"Phone Number: "<<contacts[index+1].phoneNumber<<endl;
-                    cout<<"Email: "<<contacts[index+1].email<<endl;
+                    cout<<"Index: "<<index<<endl;
+                    cout<<"Name: "<<contacts[index].name<<endl;
+                    cout<<"Phone Number: "<<contacts[index].phoneNumber<<endl;
+                    cout<<"Email: "<<contacts[index].email<<endl;
                     break;
                 }
             }
@@ -87,7 +87,7 @@ public:
         if(contacts.empty())
             cout<<"Contacts not found"<<endl;
         else {
-            int count=1;
+            int count=0;
             for(auto it=contacts.begin(); it!=contacts.end(); it++) {
                 cout<<"Index : "<<count<<endl;
                 cout<<"Name : "<<it->name<<endl;
@@ -102,8 +102,8 @@ public:
 };
 
 int main() {
+    ContactManager contactManager;
     while(1) {
-        ContactManager contactManager;
         cout<<"Contact Management System"<<endl<<endl;
         cout<<"1. Add Contact"<<endl;
         cout<<"2. Edit Contact"<<endl;
